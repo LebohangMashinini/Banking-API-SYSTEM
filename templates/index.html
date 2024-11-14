@@ -1,40 +1,42 @@
-{% extends "base.html"%} {% block head %}
+{% extends "base.html" %}
+
+{% block head %}
 <title>Banking API System</title>
-{% endblock%} {% block body %}
+{% endblock %}
+
+{% block body %}
 <div class="content">
-  <h1>Welcome to the Banking API System</h1>
-  <p>
-    Here you can create a new account, view your balance, and perform
-    transactions.
-  </p>
+  <div class="container">
+    <!-- Right Column (Centered Form and Title) -->
+    <div class="right">
+      <!-- Title inside the right column -->
+      <div class="title">Welcome to the Banking API System</div>
 
-  <form action="/" method="POST">
-    <div class="group">
-      <label for="email">Enter your email address: </label>
-      <input type="email" id="email" required />
-    </div>
-    <div class="group">
-      <label for="id">Enter your ID: </label>
-      <input type="id" id="id" required />
-    </div>
-    <div class="group">
-      <input type="submit" value="Login" />
-    </div>
-  </form>
+      <!-- Form in the right column -->
+      <form action="/" method="POST">
+        <div class="group">
+          <label for="email">Enter your email address:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="group">
+          <label for="id">Enter your ID:</label>
+          <input type="text" id="id" name="id" required />
+        </div>
+        <div class="group">
+          <label for="password">Enter your password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="group">
+          <input type="submit" value="Login" />
+        </div>
+      </form>
 
-  <ul>
-    <li>
-      <a href="/create_account/">Create Account</a>
-    </li>
-    <li>
-      <a href="/view_balance">View Balance</a>
-    </li>
-    <li>
-      <a href="/deposit">Deposit Funds</a>
-    </li>
-    <li>
-      <a href="/withdraw">Withdraw Funds</a>
-    </li>
-  </ul>
-  {% endblock %}
+      <!-- Footer (Create Account Link) -->
+      <div class="footer">
+        <p>Don't have an account? <a href="/create_account">Create Account</a></p>
+      </div>
+    </div>
+  </div>
 </div>
+{% endblock %}
+

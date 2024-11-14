@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder="./templates")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banking.db"
 db = SQLAlchemy(app)
 
@@ -18,10 +18,13 @@ class Account(db.Model):
 def index():
     return render_template("index.html")
 
-@app.route("/create_account/<int:id>", methods=["GET", "POST"])
-def create_account(id):
-    return ""
+@app.route("/create_account", methods=["GET", "POST"])
+def create_account():
+    return render_template("create_account.html")
 
+@app.route("/view_balance", methods=["GET", "POST"])
+def view_balance():
+    return render_template("view_balance.html")
 
 
 if __name__ == "__main__":
