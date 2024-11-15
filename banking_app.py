@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__,template_folder="./templates")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banking.db"
@@ -20,6 +21,9 @@ def index():
 
 @app.route("/create_account", methods=["GET", "POST"])
 def create_account():
+    if request.method == "POST":
+        email = request.form.get("email")
+        return f"Email recived: {email}"
     return render_template("create_account.html")
 
 @app.route("/view_balance", methods=["GET", "POST"])
